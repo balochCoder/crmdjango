@@ -27,17 +27,16 @@
           {% csrf_token %} {{form.as_p}}
           <button type="submit">Update</button>
         </form>
-        <form action="{% url 'leads:lead-delete' lead.pk %}" method="post">
+  
           <div class="flex">
-            {% csrf_token %}
-            <button
-              type="submit"
+           
+            <a href="{% url 'leads:lead-delete' lead.pk %}"
               class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
             >
               Delete
-            </button>
+            </a>
           </div>
-        </form>
+
       </div>
       <img
         alt="ecommerce"
