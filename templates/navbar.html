@@ -21,21 +21,24 @@
       </svg>
       <span class="ml-3 text-xl">DJ CRM</span>
     </a>
-     <nav
+    <nav
       class="md:ml-auto flex flex-wrap items-center text-base justify-center"
     >
-   
+      {% if not request.user.is_authenticated %}
+      <a href="{% url 'signup' %}" class="mr-5 hover:text-gray-900">Signup</a>
+      {% else %} {% if request.user.is_organiser %}
+      <a href="{% url 'agents:agent-list' %}" class="mr-5 hover:text-gray-900"
+        >Agents</a
+      >
+      {% endif %}
       <a href="{% url 'leads:lead-list' %}" class="mr-5 hover:text-gray-900"
         >Leads</a
       >
-    {% if not request.user.is_authenticated %}
-      <a href = "{% url 'signup' %}" class="mr-5 hover:text-gray-900">Signup</a>
-    
-    {% endif %} 
+      {% endif %}
     </nav>
     {% if request.user.is_authenticated %} Logged in as:
-    {{request.user.username}} 
-      <a
+    {{request.user.username}}
+    <a
       href="{% url 'logout'%}"
       class="ml-3 inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
       >Logout
