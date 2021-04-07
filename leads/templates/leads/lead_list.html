@@ -6,6 +6,10 @@
     >
       <div>
         <h1 class="text-4xl text-gray-800">Leads</h1>
+        <a
+          class="text-gray-500 hover:text-green-500"
+          href="{% url 'leads:category-list' %}"
+          >View Categories</a>
       </div>
       {% if request.user.is_organiser %}
       <div>
